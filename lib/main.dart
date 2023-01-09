@@ -14,14 +14,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -31,16 +30,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
   TextEditingController TextContrl =  TextEditingController();
 
-  var random_number= Random().nextInt(3).toString();
+  var random_number;
 
   var Check;
 
   void CheckCondition() {
     setState(() {
       Check =TextContrl.text;
-    });
-    setState(() {
-
+      random_number= Random().nextInt(3).toString();
+      TextContrl.clear();
     });
   }
 
@@ -48,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text("Luck"),
       ),
       body: Center(
         child: Padding(
